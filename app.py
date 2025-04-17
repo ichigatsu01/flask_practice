@@ -18,10 +18,6 @@ def rendering(msg):
         msg_lists = msg_lists
     )
 
-# def render_main_page(msg="", title="メッセージアプリ"):
-#     return render_template("index.html", title=title, msg=msg, msg_lists=msg_lists)
-
-
 #methodsでGETとPOSTを指定
 @app.route("/", methods=['GET', 'POST'])
 def hello():
@@ -33,27 +29,13 @@ def hello():
         if action == "送信":
             msg_lists.append(msg)
             msg = 'You typed ' + msg
-            # return render_template(
-            #     'index.html',
-            #     title = 'Hello',
-            #     msg_lists = msg_lists
-            # )
             return rendering(msg)
         else:
             msg_lists = []
             msg = 'テキストをクリアしました'
-            # return render_template(
-            #     'index.html',
-            #     title = 'Hello',
-            #     msg_lists = msg_lists
-            # )
             return rendering(msg)
     else:
         msg = '入力した文字が追加されていきます。'
-        # return render_template(
-        #     'index.html',
-        #     title = 'Hello',
-        # )
         return rendering(msg)
 
 if __name__ == '__main__':
