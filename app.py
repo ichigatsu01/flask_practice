@@ -4,9 +4,9 @@
 
 
 from flask import Flask, render_template, request
+import os #render使用時に使う
 
 app = Flask("helloapp")
-# msg_lists = []
 msg_lists = []
 handle_rest = False
 
@@ -39,5 +39,6 @@ def hello():
         return rendering(msg)
 
 if __name__ == '__main__':
-    app.debug = True
+    # app.debug = True 開発環境用
+    port = int(os.environ.get('PORT', 5000))
     app.run(host='127.0.0.1')
